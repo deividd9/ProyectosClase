@@ -1,0 +1,44 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Anubis",
+            "id": "e0a54cfc-5d1e-4a72-b7e4-cef0549f6982",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "2b455d5b-7800-4888-99a1-ed7d124fb59f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9ac86413-f7b0-4b5f-840c-d2a5d8463caf",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94c225ac-fd8c-4d46-97dc-f4511fd6b56b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
