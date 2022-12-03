@@ -1,2 +1,1 @@
-# ProyectosClase
-proyectos de la asignatura desarrollo de productos interactivos multidispositivo
+# Cuesta_David_Zaxxon
