@@ -590,11 +590,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1211219477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72217a8e0fd35f147a3ce854007c8863, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d0cb9046c7bea24688f9dbe3b8e9fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 4579819076183332016, guid: 82e5c16aca656574dbc99c56683401ea, type: 3}
-  instPos: {fileID: 1995163559}
+  instPos: {fileID: 1211219479}
   playerManager: {fileID: 1995163555}
 --- !u!4 &1211219479
 Transform:
