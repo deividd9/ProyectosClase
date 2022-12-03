@@ -2,67 +2,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstObstacle : MonoBehaviour
+public class Instanciador : MonoBehaviour
 {
-    [SerializeField] GameObject bolos;
-    Vector3 instPos;
-    Transform otroPos;
+    [SerializeField] GameObject Obstacle;
+    [SerializeField] Transform instPos;
 
-    //Numero de enemigos
-    int enemies = 2;
-    //Separacion
-    float sep = 2f;
+    [SerializeField] PlayerManager playerManager;
 
-    //Intervalo de creacion de enemigos
-    float intervalo = 1f;
+    //Intervalo de la corrutina
+    float intervalo;
+    float distanciaEntreObstaculos;
+    float speed;
 
-    //Variables de movimiento
-    float desplSpeed = 4f;
+    float obstacleInicial;
+    float distIntermedia;
+    float distPrimer = 100f;
 
+    //rango aleatorio instanciacion
+    float randomX;
+    float randomRangeX = 40f;
+    
     // Start is called before the first frame update
     void Start()
     {
+        distanciaEntreObstaculos = 20f;
+        speed = playerManager.speed;
+        intervalo = distanciaEntreObstaculos / speed;
 
-        StartCoroutine("CorrutinaEnemigos");
-        //CrearEnemigos();
+        StartCoroutine("Iniciar");
 
-        //instPos = otroPos.position;
+        CrearIniciales();
+
     }
 
-    void CrearEnemigos()
+    void CrearIniciales()
     {
-        instPos = transform.position;
+        distIntermedia = transform.position.z - distPrimer;
+        obstacleInicial = Mathf.Floor(distIntermedia / distanciaEntreObstaculos);
 
-        for (int n = 0; n < enemies; n++)
+        float posZ = distPrimer;
+        for (int n = 0; n < obstacleInicial; n++)
         {
 
-
-            Instantiate(enemigoPrefab, instPos, Quaternion.identity);
-
-            Vector3 sumaVector = new Vector3(0f, 0f, sep);
-            instPos = instPos + sumaVector;
+            CrearObstaculo(posZ);
+            posZ += distanciaEntreObstaculos;
         }
+
+        /*
+        float posZ = 60f;
+        for(int n = 0; n < 100; n++)
+        {
+            CrearObstaculo(posZ);
+            posZ += 10f;
+        }
+        */
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        instPos = transform.position;
-
-        transform.Translate(Vector3.right * desplSpeed * Time.deltaTime);
-
+        speed = playerManager.speed;
+        intervalo = distanciaEntreObstaculos / speed;
     }
 
-    IEnumerator CorrutinaEnemigos()
+    void CrearObstaculo(float posZ)
     {
-        while(true)
+        randomX = Random.Range(-randomRangeX, randomRangeX);
+        Vector3 randomPos = new Vector3(randomX, instPos.position.y, posZ);
+        Instantiate(Obstacle, randomPos, Quaternion.identity);
+    }
+
+    IEnumerator Iniciar()
+    {
+
+        while (true)
         {
-
-            CrearEnemigos();
-
+            CrearObstaculo(transform.position.z);
             yield return new WaitForSeconds(intervalo);
 
-            
         }
     }
 }
